@@ -6,7 +6,7 @@ html, body {
 
 body {
 	background-color: #000;
-	color: #333;
+	color: #fff;
 	margin: 0;
 	padding: 8px;
 	box-sizing: border-box;
@@ -31,14 +31,13 @@ label {
 }
 
 input, button, select, textarea {
-	font-family: inherit;
-	font-size: inherit;
-	-webkit-padding: 0.4em 0;
-	padding: 0.4em;
-	margin: 0 0 0.5em 0;
-	box-sizing: border-box;
-	border: 1px solid #ccc;
-	border-radius: 2px;
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
 }
 
 input:disabled {
@@ -46,8 +45,7 @@ input:disabled {
 }
 
 button {
-	color: #333;
-	background-color: #f4f4f4;
+	color: #fff;
 	outline: none;
 }
 
