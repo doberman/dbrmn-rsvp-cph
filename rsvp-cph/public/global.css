@@ -62,3 +62,9 @@ button:not(:disabled):active {
 button:focus {
 	border-color: #666;
 }
+
+@font-face {
+	font-family: 'Gerstner Programm';
+	src: url("./GerstnerProgramm-Regular.otf") format("otf");
+	font-style: normal;
+}
