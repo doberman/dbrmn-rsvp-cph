@@ -3,10 +3,11 @@
 </script>
 
 <main>
-  <h1>Hello {name}!</h1>
   <p>
-    Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
-    how to build Svelte apps.
+    Save the date. Let’s celebrate the official opening of our Copenhagen studio
+    with a Back Yard BBQ. EY Doberman Frederiksholms Kanal 30 A6 1220 København
+    8 Sept 2022 6-10 PM
+    <button>RSVP</button>
   </p>
 </main>
 
