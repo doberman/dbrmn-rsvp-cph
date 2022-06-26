@@ -6,3 +6,5 @@ export const user = writable({
 });
 
 export const state = writable('startScreen');
+
+export const isShowing = writable(false);

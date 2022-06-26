@@ -1,18 +1,18 @@
 <script>
   import { state, user } from './store.js';
 
+  let isImageShowing = false;
   let yes = false;
-  let isShowing = false;
 
   const showForm = () => {
     state.set('showForm');
   };
 
   function handleMouseOver(e) {
-    isShowing = !isShowing;
+    isImageShowing = !isImageShowing;
   }
   function handleMouseOut(e) {
-    isShowing = !isShowing;
+    isImageShowing = !isImageShowing;
   }
 
   window.addEventListener('load', function () {
@@ -29,10 +29,24 @@
       });
     });
   });
+
+  function handleMouseMove(e) {
+    const element = document.querySelector('img');
+    const imgVertical = e.clientY;
+    const imgHorizontal = e.clientX;
+
+    element.style.top = `${imgVertical - 120}px`;
+    element.style.left = `${imgHorizontal - 120}px`;
+  }
 </script>
 
 <main>
-  <div class={`content ${$state === 'startScreen' ? 'show' : 'hide'}`}>
+  <div
+    class:has-opacity={isImageShowing}
+    class={`content ${$state === 'startScreen' ? 'show' : 'hide'}`}
+  >
+    <img class:on-hover={isImageShowing} class="img" src="/backyard.jpg" />
+
     <p>
       Save the date. Let’s celebrate the official opening of our Copenhagen
       studio with a Back Yard BBQ.
@@ -41,12 +55,12 @@
       class="address"
       on:mouseover={handleMouseOver}
       on:mouseout={handleMouseOut}
+      on:mousemove={handleMouseMove}
     >
       <span>EY Doberman</span>
       <span>Frederiksholms Kanal 30</span>
       <span>A6</span>
       <span>1220 København</span>
-      <img class:on-hover={isShowing} class="img" src="/backyard.jpg" />
     </div>
     <p>8 Sept 2022 6-10 PM</p>
     <div class="button-wrapper">
@@ -111,16 +125,16 @@
     margin: 0;
   }
 
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
-  }
-
   p {
     font-size: 2.4em;
     margin: 0 0 30px 0;
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+
+  .has-opacity p {
+    opacity: 0;
+    transition: opacity 0.3s;
   }
 
   label {
@@ -138,16 +152,19 @@
   }
 
   .img {
-    display: none;
+    cursor: none;
+    opacity: 0;
     position: absolute;
-    top: 0;
-    right: 0;
     z-index: -1;
-    width: 70%;
+    transition: opacity 0.3s;
+    top: 0;
+    left: 0;
+    max-width: 450px;
   }
 
   .img.on-hover {
-    display: block;
+    opacity: 1;
+    transition: opacity 0.3s;
   }
 
   ::placeholder {
@@ -157,6 +174,7 @@
   .content {
     height: calc(100vh - 160px);
     padding: 80px;
+    position: relative;
     max-width: 710px;
   }
 
@@ -169,6 +187,7 @@
   }
 
   .address {
+    cursor: none;
     margin-bottom: 30px;
     position: relative;
   }
