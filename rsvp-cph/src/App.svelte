@@ -21,6 +21,7 @@
       e.preventDefault();
       const data = new FormData(form);
       const action = e.target.action;
+      state.set('isLoading');
       fetch(action, {
         method: 'POST',
         body: data,
@@ -43,11 +44,11 @@
 <main>
   <div
     class:has-opacity={isImageShowing}
-    class={`content ${$state !== 'startScreen' ? 'show' : 'hide'}`}
+    class={`content ${$state === 'startScreen' ? 'show' : 'hide'}`}
   >
     <img class:on-hover={isImageShowing} class="img" src="/backyard.jpg" />
 
-    <p>
+    <p className="wrapper">
       Save the date. Let’s celebrate the official opening of our Copenhagen
       studio with a Back Yard BBQ.
     </p>
@@ -62,13 +63,16 @@
       <span>A6</span>
       <span>1220 København</span>
     </div>
-    <p>8 Sept 2022 6-10 PM</p>
+    <span>8 Sept 2022</span>
+    <span>6-10 PM</span>
     <div class="button-wrapper">
       <button on:click={showForm}>RSVP</button>
     </div>
   </div>
 
-  <div class={`rsvp-content ${$state === 'showForm' ? 'show' : 'hide'}`}>
+  <div
+    class={`content rsvp-content ${$state === 'showForm' ? 'show' : 'hide'}`}
+  >
     <div class="content-form">
       <p>
         Save the date. Let’s celebrate the official opening of our Copenhagen
@@ -80,7 +84,8 @@
         <span>A6</span>
         <span>1220 København</span>
       </div>
-      <p>8 Sept 2022 6-10 PM</p>
+      <span>8 Sept 2022 6-10 PM</span>
+      <span>6-10 PM</span>
     </div>
 
     <div class="form">
@@ -95,6 +100,7 @@
           placeholder="Name"
           type="text"
           bind:value={$user.name}
+          required
         />
 
         <input
@@ -102,6 +108,7 @@
           placeholder="Email"
           type="text"
           bind:value={$user.email}
+          required
         />
 
         <div class="checkbox-wrapper">
@@ -118,8 +125,16 @@
     </div>
   </div>
   <div
+    class={`content content--centered content--wide ${
+      $state === 'isLoading' ? 'show' : 'hide'
+    }`}
+  >
+    <span class="loader" />
+  </div>
+
+  <div
     class={`content content--centered ${
-      $state === 'startScreen' ? 'show' : 'hide'
+      $state === 'showSuccessScreen' ? 'show' : 'hide'
     }`}
   >
     <div class="message-wrapper">
@@ -141,6 +156,19 @@
 <style>
   .message-wrapper {
     position: relative;
+  }
+
+  .message-wrapper p {
+    margin-bottom: 0;
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
   @keyframes star {
     to {
@@ -216,7 +244,7 @@
 
   p {
     font-size: 2.4em;
-    margin: 0;
+    margin: 0 0 20px 0;
     opacity: 1;
     transition: opacity 0.3s;
   }
@@ -268,11 +296,16 @@
     height: calc(100vh - 160px);
     padding: 80px;
     position: relative;
-    max-width: 710px;
+    max-width: 540px;
   }
 
   .content--centered {
     justify-content: center;
+    max-width: 100%;
+  }
+
+  .content--wide {
+    max-width: 100%;
   }
 
   .rsvp-content {
@@ -281,6 +314,7 @@
     height: calc(100vh - 160px);
     padding: 80px;
     width: 50%;
+    max-width: 100%;
   }
 
   .address {
@@ -294,7 +328,7 @@
     margin-top: -30px;
   }
   .checkbox-label {
-    display: inline-block;
+    display: flex;
     font-size: 16px;
   }
 
@@ -325,6 +359,18 @@
     margin-bottom: 50px;
   }
 
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #fff;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    margin: auto;
+  }
+
   .label-text {
     border-bottom: 1px solid #fff;
     margin-bottom: 30px;
@@ -340,7 +386,11 @@
   .content-form span {
     font-size: 16px;
     opacity: 0.3;
-    max-width: 45%;
+    max-width: 480px;
+  }
+
+  .content-form {
+    margin-bottom: 30px;
   }
 
   form {
