@@ -205,8 +205,8 @@
     animation-duration: 3s;
     animation-direction: alternate;
     position: absolute;
-    top: 35px;
-    left: -30px;
+    top: -30px;
+    left: 0px;
   }
   @keyframes star2 {
     0% {
@@ -229,8 +229,8 @@
     animation-duration: 5s;
     animation-direction: alternate;
     position: absolute;
-    top: -30px;
-    left: -30px;
+    top: 100px;
+    left: 0px;
   }
 
   a {
@@ -243,36 +243,29 @@
   }
 
   p {
-    font-size: 2.4em;
+    font-size: 1.4em;
     margin: 0 0 20px 0;
     opacity: 1;
-    transition: opacity 0.3s;
   }
 
   .paragraph {
     font-size: 1em;
   }
-
-  .has-opacity p {
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
   label {
-    font-size: 2.4em;
+    font-size: 1.4em;
   }
 
   span {
     display: block;
-    font-size: 2.4em;
   }
 
   button {
-    font-size: 2.4em;
+    font-size: 1.4em;
     border-bottom: 1px solid #fff;
   }
 
   .img {
+    display: none;
     cursor: none;
     opacity: 0;
     position: absolute;
@@ -294,7 +287,7 @@
 
   .content {
     height: calc(100vh - 160px);
-    padding: 80px;
+    padding: 80px 20px;
     position: relative;
     max-width: 540px;
   }
@@ -311,9 +304,6 @@
   .rsvp-content {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 160px);
-    padding: 80px;
-    width: 50%;
     max-width: 100%;
   }
 
@@ -348,7 +338,7 @@
     margin: 0 1em 0 0;
     padding: 0;
     vertical-align: top;
-    width: 16px;
+    min-width: 16px;
   }
   input[type='checkbox']:checked + label:before {
     background: url('/check-mark.svg') no-repeat center;
@@ -402,7 +392,7 @@
 
   input[type='text'] {
     border-bottom: 1px solid #fff;
-    font-size: 2.4em;
+    font-size: 1.4em;
     width: 100%;
   }
 
@@ -432,5 +422,42 @@
 
   .hide {
     display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    .content {
+      padding: 80px;
+    }
+
+    p,
+    span,
+    button,
+    label,
+    input[type='text'] {
+      font-size: 2.4em;
+    }
+
+    .img {
+      display: block;
+    }
+
+    .has-opacity p {
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .rsvp-content {
+      width: 50%;
+    }
+
+    .star1 {
+      top: 35px;
+      left: -30px;
+    }
+
+    .star2 {
+      top: -30px;
+      left: -30px;
+    }
   }
 </style>
