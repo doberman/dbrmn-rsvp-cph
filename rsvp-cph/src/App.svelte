@@ -43,7 +43,7 @@
 <main>
   <div
     class:has-opacity={isImageShowing}
-    class={`content ${$state === 'startScreen' ? 'show' : 'hide'}`}
+    class={`content ${$state !== 'startScreen' ? 'show' : 'hide'}`}
   >
     <img class:on-hover={isImageShowing} class="img" src="/backyard.jpg" />
 
@@ -117,9 +117,98 @@
       </form>
     </div>
   </div>
+  <div
+    class={`content content--centered ${
+      $state === 'startScreen' ? 'show' : 'hide'
+    }`}
+  >
+    <div class="message-wrapper">
+      <img alt="star" class="star" src="star-1.svg" />
+      <img alt="star" class="star1" src="star-2.svg" />
+
+      <img alt="star" class="star2" src="star-3.svg" />
+
+      <p>Fun!</p>
+      <p>We'll see you after the vacations!</p>
+    </div>
+    <p class="paragraph">
+      A remider will be sent as we’re getting closer. Add event to: <a>iCal</a>,
+      <a>Outlook</a> or <a>Google Cal</a>.
+    </p>
+  </div>
 </main>
 
 <style>
+  .message-wrapper {
+    position: relative;
+  }
+  @keyframes star {
+    to {
+      zoom: 10%;
+      opacity: 0;
+    }
+    from {
+      zoom: 100%;
+      opacity: 1;
+    }
+  }
+  .star {
+    animation-name: star;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-direction: alternate;
+    position: absolute;
+    left: 80px;
+    top: -10px;
+  }
+  @keyframes star1 {
+    to {
+      opacity: 0;
+    }
+    from {
+      opacity: 1;
+    }
+  }
+  .star1 {
+    animation-name: star1;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 3s;
+    animation-direction: alternate;
+    position: absolute;
+    top: 35px;
+    left: -30px;
+  }
+  @keyframes star2 {
+    0% {
+      opacity: 1;
+    }
+    45% {
+      opacity: 1;
+    }
+    55% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  .star2 {
+    animation-name: star2;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 5s;
+    animation-direction: alternate;
+    position: absolute;
+    top: -30px;
+    left: -30px;
+  }
+
+  a {
+    color: white;
+    text-decoration: underline;
+  }
   main {
     height: 100%;
     margin: 0;
@@ -127,9 +216,13 @@
 
   p {
     font-size: 2.4em;
-    margin: 0 0 30px 0;
+    margin: 0;
     opacity: 1;
     transition: opacity 0.3s;
+  }
+
+  .paragraph {
+    font-size: 1em;
   }
 
   .has-opacity p {
@@ -176,6 +269,10 @@
     padding: 80px;
     position: relative;
     max-width: 710px;
+  }
+
+  .content--centered {
+    justify-content: center;
   }
 
   .rsvp-content {
