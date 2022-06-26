@@ -2,10 +2,18 @@
   import { state, user } from './store.js';
 
   let yes = false;
+  let isShowing = false;
 
   const showForm = () => {
     state.set('showForm');
   };
+
+  function handleMouseOver(e) {
+    isShowing = !isShowing;
+  }
+  function handleMouseOut(e) {
+    isShowing = !isShowing;
+  }
 
   window.addEventListener('load', function () {
     const form = document.getElementById('my-form');
@@ -29,11 +37,16 @@
       Save the date. Let’s celebrate the official opening of our Copenhagen
       studio with a Back Yard BBQ.
     </p>
-    <div class="address">
+    <div
+      class="address"
+      on:mouseover={handleMouseOver}
+      on:mouseout={handleMouseOut}
+    >
       <span>EY Doberman</span>
       <span>Frederiksholms Kanal 30</span>
       <span>A6</span>
       <span>1220 København</span>
+      <img class:on-hover={isShowing} class="img" src="/backyard.jpg" />
     </div>
     <p>8 Sept 2022 6-10 PM</p>
     <div class="button-wrapper">
@@ -124,26 +137,40 @@
     border-bottom: 1px solid #fff;
   }
 
+  .img {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    width: 70%;
+  }
+
+  .img.on-hover {
+    display: block;
+  }
+
   ::placeholder {
     color: #fff;
   }
 
   .content {
-    height: calc(100vh - 200px);
-    padding: 100px;
+    height: calc(100vh - 160px);
+    padding: 80px;
     max-width: 710px;
   }
 
   .rsvp-content {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 200px);
-    padding: 100px;
+    height: calc(100vh - 160px);
+    padding: 80px;
     width: 50%;
   }
 
   .address {
     margin-bottom: 30px;
+    position: relative;
   }
 
   .checkbox-wrapper {
