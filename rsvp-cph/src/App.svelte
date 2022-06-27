@@ -146,7 +146,6 @@
 
   .message-wrapper p {
     margin-bottom: 0;
-    font-size: 1.6em;
   }
 
   @keyframes rotation {

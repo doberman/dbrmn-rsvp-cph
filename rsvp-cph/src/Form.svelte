@@ -52,7 +52,6 @@
 
   .checkbox-wrapper {
     display: flex;
-    margin-top: -30px;
   }
   .checkbox-label {
     display: flex;
@@ -87,7 +86,7 @@
   }
 
   input[type='text'] {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
 
   form {
@@ -115,7 +114,7 @@
 
   .button-wrapper {
     flex-grow: 1;
-    margin-top: 100px;
+    margin-top: 70px;
   }
 
   .form {
@@ -123,10 +122,14 @@
   }
 
   @media screen and (min-width: 768px) {
+    .checkbox-wrapper {
+      margin-top: -30px;
+    }
     button,
     label,
     input[type='text'] {
-      font-size: 2.4vw;
+      font-size: 2.4em;
+      margin-bottom: 50px;
     }
   }
 
