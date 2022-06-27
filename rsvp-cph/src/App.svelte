@@ -50,31 +50,33 @@
     class:has-opacity={isImageShowing}
     class={`content ${$state === 'startScreen' ? 'show' : 'hide'}`}
   >
-    <img
-      alt="backyard"
-      class:on-hover={isImageShowing}
-      class="img"
-      src="/backyard.jpg"
-    />
+    <div>
+      <img
+        alt="backyard"
+        class:on-hover={isImageShowing}
+        class="img"
+        src="/backyard.jpg"
+      />
 
-    <p class="wrapper">
-      Save the date. Let’s celebrate the official opening of our Copenhagen
-      studio with a Back Yard BBQ.
-    </p>
-    <div
-      class="address"
-      on:mouseover={handleMouseOver}
-      on:mouseout={handleMouseOut}
-      on:mousemove={handleMouseMove}
-    >
-      <span>EY Doberman</span>
-      <span>Frederiksholms Kanal 30</span>
-      <span>A6</span>
-      <span>1220 København</span>
-    </div>
-    <div class="date">
-      <p>8 Sept 2022</p>
-      <p>6-10 PM</p>
+      <p class="wrapper">
+        Save the date. Let’s celebrate the official opening of our Copenhagen
+        studio with a Back Yard BBQ.
+      </p>
+      <div
+        class="address"
+        on:mouseover={handleMouseOver}
+        on:mouseout={handleMouseOut}
+        on:mousemove={handleMouseMove}
+      >
+        <span>EY Doberman</span>
+        <span>Frederiksholms Kanal 30</span>
+        <span>A6</span>
+        <span>1220 København</span>
+      </div>
+      <div class="date">
+        <p>8 Sept 2022</p>
+        <p>6-10 PM</p>
+      </div>
     </div>
     <div class="button-wrapper">
       <button on:click={showForm}>RSVP</button>
@@ -334,6 +336,7 @@
   .show {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: flex-start;
   }
 
@@ -351,7 +354,8 @@
 
   @media screen and (min-width: 768px) {
     .content {
-      padding: 80px;
+      padding: 40px;
+      height: calc(100vh - 80px);
     }
 
     .content--centered {
