@@ -42,7 +42,7 @@
 </script>
 
 <svelte:head>
-  <title>Doberman RSVP</title>
+  <title>RSVP Doberman Backyard Party</title>
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 </svelte:head>
 <main>

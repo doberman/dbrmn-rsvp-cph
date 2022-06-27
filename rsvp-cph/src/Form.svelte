@@ -136,7 +136,8 @@
   @media screen and (min-width: 1280px) {
     p,
     span,
-    button {
+    button,
+    input[type='text'] {
       font-size: 3vw;
       opacity: 1;
       transition: opacity 0.3s;
