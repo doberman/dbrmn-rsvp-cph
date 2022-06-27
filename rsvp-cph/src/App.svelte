@@ -327,10 +327,6 @@
     bottom: 0;
   }
 
-  .button-wrapper {
-    flex-grow: 1;
-  }
-
   .form {
     flex-grow: 1;
   }
