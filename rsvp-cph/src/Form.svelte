@@ -99,7 +99,7 @@
 
   input[type='text'] {
     border-bottom: 1px solid #fff;
-    font-size: 2.4em;
+    font-size: 1.4em;
     width: 100%;
   }
 
@@ -109,14 +109,13 @@
 
   button {
     bottom: 0;
-    position: absolute;
-    font-size: 2.4em;
+    font-size: 1.4em;
     border-bottom: 1px solid #fff;
   }
 
   .button-wrapper {
     flex-grow: 1;
-    position: relative;
+    margin-top: 100px;
   }
 
   .form {
@@ -128,6 +127,24 @@
     label,
     input[type='text'] {
       font-size: 2.4vw;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    p,
+    span,
+    button {
+      font-size: 3vw;
+      opacity: 1;
+      transition: opacity 0.3s;
+    }
+
+    .paragraph {
+      font-size: 1vw;
+    }
+
+    .content--centered {
+      max-width: 100%;
     }
   }
 </style>

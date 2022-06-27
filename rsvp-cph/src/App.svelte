@@ -123,7 +123,7 @@
       <p>We'll see you after the vacations!</p>
     </div>
     <p class="paragraph">
-      A remider will be sent as we’re getting closer. Add event to: <a
+      A reminder will be sent as we’re getting closer. Add event to: <a
         href="myevents.ics">iCal</a
       >,
       <a
@@ -146,6 +146,7 @@
 
   .message-wrapper p {
     margin-bottom: 0;
+    font-size: 1.6em;
   }
 
   @keyframes rotation {
@@ -168,10 +169,8 @@
   }
   .star {
     animation-name: star;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-duration: 2s;
-    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-duration: 1.5s;
     position: absolute;
     left: 80px;
     top: -10px;
@@ -186,34 +185,24 @@
   }
   .star1 {
     animation-name: star1;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     animation-duration: 3s;
-    animation-direction: alternate;
     position: absolute;
     top: -30px;
     left: 0px;
   }
   @keyframes star2 {
     0% {
-      opacity: 1;
-    }
-    45% {
-      opacity: 1;
-    }
-    55% {
       opacity: 0;
     }
     100% {
-      opacity: 0;
+      opacity: 1;
     }
   }
   .star2 {
     animation-name: star2;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-duration: 5s;
-    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-duration: 2s;
     position: absolute;
     top: 100px;
     left: 0px;
@@ -235,11 +224,12 @@
   }
 
   .paragraph {
-    font-size: 1vw;
+    font-size: 14px;
   }
 
   span {
     display: block;
+    font-size: 1.4em;
   }
 
   button {
@@ -341,12 +331,10 @@
 
   button {
     bottom: 0;
-    position: absolute;
   }
 
   .button-wrapper {
     flex-grow: 1;
-    position: relative;
   }
 
   .form {
@@ -367,18 +355,29 @@
     margin-bottom: 0;
   }
 
+  .date {
+    margin-bottom: 30px;
+  }
+
   @media screen and (min-width: 768px) {
     .content {
       padding: 80px;
-      max-width: 34vw;
     }
 
+    .content--centered {
+      max-width: 100%;
+    }
+    .message-wrapper p,
     p,
     span,
     button {
-      font-size: 2.5vw;
+      font-size: 2.4em;
       opacity: 1;
       transition: opacity 0.3s;
+    }
+
+    .paragraph {
+      font-size: 1em;
     }
 
     .img {
@@ -391,7 +390,7 @@
     }
 
     .rsvp-content {
-      width: 50%;
+      max-width: 50%;
     }
 
     .star1 {
@@ -402,6 +401,28 @@
     .star2 {
       top: -30px;
       left: -30px;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    .content {
+      max-width: 41vw;
+    }
+    .message-wrapper p,
+    p,
+    span,
+    button {
+      font-size: 3vw;
+      opacity: 1;
+      transition: opacity 0.3s;
+    }
+
+    .paragraph {
+      font-size: 1vw;
+    }
+
+    .content--centered {
+      max-width: 100%;
     }
   }
 </style>
