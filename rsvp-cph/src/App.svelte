@@ -1,8 +1,8 @@
 <script>
   import { state, user } from './store.js';
+  import Form from './Form.svelte';
 
   let isImageShowing = false;
-  let yes = false;
 
   const showForm = () => {
     state.set('showForm');
@@ -26,7 +26,7 @@
         method: 'POST',
         body: data,
       }).then(() => {
-        state.set('showSuccessScreen');
+        state.set('successScreen');
       });
     });
   });
@@ -41,14 +41,23 @@
   }
 </script>
 
+<svelte:head>
+  <title>Doberman RSVP</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+</svelte:head>
 <main>
   <div
     class:has-opacity={isImageShowing}
     class={`content ${$state === 'startScreen' ? 'show' : 'hide'}`}
   >
-    <img class:on-hover={isImageShowing} class="img" src="/backyard.jpg" />
+    <img
+      alt="backyard"
+      class:on-hover={isImageShowing}
+      class="img"
+      src="/backyard.jpg"
+    />
 
-    <p className="wrapper">
+    <p class="wrapper">
       Save the date. Let’s celebrate the official opening of our Copenhagen
       studio with a Back Yard BBQ.
     </p>
@@ -63,8 +72,10 @@
       <span>A6</span>
       <span>1220 København</span>
     </div>
-    <span>8 Sept 2022</span>
-    <span>6-10 PM</span>
+    <div class="date">
+      <p>8 Sept 2022</p>
+      <p>6-10 PM</p>
+    </div>
     <div class="button-wrapper">
       <button on:click={showForm}>RSVP</button>
     </div>
@@ -87,42 +98,7 @@
       <span>8 Sept 2022 6-10 PM</span>
       <span>6-10 PM</span>
     </div>
-
-    <div class="form">
-      <form
-        class="form"
-        id="my-form"
-        method="POST"
-        action="https://script.google.com/macros/s/AKfycbxaR3QyA4605JeriX4MRq3BD3N2Rij3LwPlvXLo3oWtHXcGFclezZG8zbd3yoC7tuqA/exec"
-      >
-        <input
-          name="Name"
-          placeholder="Name"
-          type="text"
-          bind:value={$user.name}
-          required
-        />
-
-        <input
-          name="Email"
-          placeholder="Email"
-          type="text"
-          bind:value={$user.email}
-          required
-        />
-
-        <div class="checkbox-wrapper">
-          <input name="Answer" type="checkbox" id="check" bind:checked={yes} />
-          <label for="check" class="checkbox-label">
-            Yes, I would like to get invited to future events from EY Doberman
-            Copenhagen
-          </label>
-        </div>
-        <div class="button-wrapper">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-    </div>
+    <Form />
   </div>
   <div
     class={`content content--centered content--wide ${
@@ -134,7 +110,7 @@
 
   <div
     class={`content content--centered ${
-      $state === 'showSuccessScreen' ? 'show' : 'hide'
+      $state === 'successScreen' ? 'show' : 'hide'
     }`}
   >
     <div class="message-wrapper">
@@ -147,8 +123,18 @@
       <p>We'll see you after the vacations!</p>
     </div>
     <p class="paragraph">
-      A remider will be sent as we’re getting closer. Add event to: <a>iCal</a>,
-      <a>Outlook</a> or <a>Google Cal</a>.
+      A remider will be sent as we’re getting closer. Add event to: <a
+        href="myevents.ics">iCal</a
+      >,
+      <a
+        href="https://outlook.office.com/calendar/0/deeplink/compose?allday=false&body=Save%20the%20date.%20Let%E2%80%99s%20celebrate%20the%20official%20opening%20of%20our%0ACopenhagen%20studio%20with%20a%20Back%20Yard%20BBQ.%20&enddt=2022-09-08T20%3A00%3A00%2B00%3A00&location=Frederiksholms%20Kanal%2030%20A6%201220%20K%C3%B8benhavn&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt=2022-09-08T14%3A00%3A00%2B00%3A00&subject=Backyard%20Party%20%40%20Doberman%20CPH"
+        title="Save Event in my Calendar">Office</a
+      >
+      or
+      <a
+        href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20220908T140000Z%2F20220908T220000Z&details=Save%20the%20date.%20Let%E2%80%99s%20celebrate%20the%20official%20opening%20of%20our%0ACopenhagen%20studio%20with%20a%20Back%20Yard%20BBQ.%20&location=Frederiksholms%20Kanal%2030%20A6%201220%20K%C3%B8benhavn&text=Backyard%20Party%20%40%20Doberman%20CPH"
+        title="Save Event in my Calendar">Google cal</a
+      >.
     </p>
   </div>
 </main>
@@ -249,10 +235,7 @@
   }
 
   .paragraph {
-    font-size: 1em;
-  }
-  label {
-    font-size: 1.4em;
+    font-size: 1vw;
   }
 
   span {
@@ -322,33 +305,6 @@
     font-size: 16px;
   }
 
-  input[type='checkbox'] {
-    display: none;
-    visibility: hidden;
-  }
-  label {
-    cursor: pointer;
-  }
-  input[type='checkbox'] + label:before {
-    border: 1px solid #fff;
-    content: '\00a0';
-    display: inline-block;
-    font: 16px/1em sans-serif;
-    height: 16px;
-    margin: 0 1em 0 0;
-    padding: 0;
-    vertical-align: top;
-    min-width: 16px;
-  }
-  input[type='checkbox']:checked + label:before {
-    background: url('/check-mark.svg') no-repeat center;
-    color: #333;
-  }
-
-  input[type='text'] {
-    margin-bottom: 50px;
-  }
-
   .loader {
     width: 48px;
     height: 48px;
@@ -383,23 +339,6 @@
     margin-bottom: 30px;
   }
 
-  form {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  input[type='text'] {
-    border-bottom: 1px solid #fff;
-    font-size: 1.4em;
-    width: 100%;
-  }
-
-  input[type='checkbox']:focus + label::before {
-    outline: rgb(59, 153, 252) auto 5px;
-  }
-
   button {
     bottom: 0;
     position: absolute;
@@ -424,17 +363,22 @@
     display: none;
   }
 
+  .date p {
+    margin-bottom: 0;
+  }
+
   @media screen and (min-width: 768px) {
     .content {
       padding: 80px;
+      max-width: 34vw;
     }
 
     p,
     span,
-    button,
-    label,
-    input[type='text'] {
-      font-size: 2.4em;
+    button {
+      font-size: 2.5vw;
+      opacity: 1;
+      transition: opacity 0.3s;
     }
 
     .img {
