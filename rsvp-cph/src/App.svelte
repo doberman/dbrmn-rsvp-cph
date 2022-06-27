@@ -237,7 +237,6 @@
 
   .img {
     display: none;
-    cursor: none;
     opacity: 0;
     position: absolute;
     z-index: -1;
@@ -279,17 +278,14 @@
   }
 
   .address {
-    cursor: none;
     margin-bottom: 30px;
     position: relative;
   }
-
   .address a {
     text-decoration: none;
   }
 
   .address a:hover {
-    cursor: none;
     text-decoration: underline;
   }
 
@@ -381,6 +377,12 @@
 
     .paragraph {
       font-size: 1em;
+    }
+
+    .address,
+    .address a:hover,
+    .img {
+      cursor: none;
     }
 
     .img {
