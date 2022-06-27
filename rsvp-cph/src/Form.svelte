@@ -50,6 +50,10 @@
     color: #fff;
   }
 
+  input:focus::placeholder {
+    opacity: 15%;
+  }
+
   .checkbox-wrapper {
     display: flex;
   }
@@ -113,8 +117,7 @@
   }
 
   .button-wrapper {
-    flex-grow: 1;
-    margin-top: 70px;
+    margin-top: auto;
   }
 
   .form {
@@ -125,7 +128,11 @@
     .checkbox-wrapper {
       margin-top: -30px;
     }
-    button,
+
+    button {
+      font-size: 2em;
+    }
+
     label,
     input[type='text'] {
       font-size: 2em;
