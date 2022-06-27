@@ -5,7 +5,7 @@
   let isImageShowing = false;
 
   const showForm = () => {
-    state.set('showForm');
+    state.set('form');
   };
 
   function handleMouseOver(e) {
@@ -26,7 +26,7 @@
         method: 'POST',
         body: data,
       }).then(() => {
-        state.set('successScreen');
+        state.set('success');
       });
     });
   });
@@ -48,7 +48,7 @@
 <main>
   <div
     class:has-opacity={isImageShowing}
-    class={`content ${$state !== 'startScreen' ? 'show' : 'hide'}`}
+    class={`content ${$state === 'startScreen' ? 'show' : 'hide'}`}
   >
     <img
       alt="backyard"
@@ -81,9 +81,7 @@
     </div>
   </div>
 
-  <div
-    class={`content rsvp-content ${$state === 'showForm' ? 'show' : 'hide'}`}
-  >
+  <div class={`content rsvp-content ${$state === 'form' ? 'show' : 'hide'}`}>
     <div class="content-form">
       <p>
         Save the date. Let’s celebrate the official opening of our Copenhagen
@@ -110,7 +108,7 @@
 
   <div
     class={`content content--centered ${
-      $state === 'startScreen' ? 'show' : 'hide'
+      $state === 'success' ? 'show' : 'hide'
     }`}
   >
     <div class="message-wrapper">
