@@ -50,33 +50,35 @@
     class:has-opacity={isImageShowing}
     class={`content ${$state === 'startScreen' ? 'show' : 'hide'}`}
   >
-    <div>
-      <img
-        alt="backyard"
-        class:on-hover={isImageShowing}
-        class="img"
-        src="/backyard.jpg"
-      />
+    <img
+      alt="backyard"
+      class:on-hover={isImageShowing}
+      class="img"
+      src="/backyard.jpg"
+    />
 
-      <p class="wrapper">
-        Save the date. Let’s celebrate the official opening of our Copenhagen
-        studio with a Back Yard BBQ.
-      </p>
-      <div
-        class="address"
-        on:mouseover={handleMouseOver}
-        on:mouseout={handleMouseOut}
-        on:mousemove={handleMouseMove}
+    <p class="wrapper">
+      Save the date. Let’s celebrate the official opening of our Copenhagen
+      studio with a Back Yard BBQ.
+    </p>
+    <div
+      class="address"
+      on:mouseover={handleMouseOver}
+      on:mouseout={handleMouseOut}
+      on:mousemove={handleMouseMove}
+    >
+      <a
+        href="https://www.google.com/maps/place/Frederiksholms+Kanal+30,+1220+K%C3%B8benhavn/@55.6728716,12.5763955,17z/data=!3m1!4b1!4m5!3m4!1s0x465253145f3fd509:0x39d5b658e6a9e420!8m2!3d55.6728686!4d12.5785895"
       >
         <span>EY Doberman</span>
         <span>Frederiksholms Kanal 30</span>
         <span>A6</span>
         <span>1220 København</span>
-      </div>
-      <div class="date">
-        <p>8 Sept 2022</p>
-        <p>6-10 PM</p>
-      </div>
+      </a>
+    </div>
+    <div class="date">
+      <p>8 Sept 2022</p>
+      <p>6-10 PM</p>
     </div>
     <div class="button-wrapper">
       <button on:click={showForm}>RSVP</button>
@@ -282,6 +284,15 @@
     position: relative;
   }
 
+  .address a {
+    text-decoration: none;
+  }
+
+  .address a:hover {
+    cursor: none;
+    text-decoration: underline;
+  }
+
   .checkbox-wrapper {
     display: flex;
     margin-top: -30px;
@@ -336,7 +347,6 @@
   .show {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: flex-start;
   }
 
@@ -354,8 +364,7 @@
 
   @media screen and (min-width: 768px) {
     .content {
-      padding: 40px;
-      height: calc(100vh - 80px);
+      padding: 80px;
     }
 
     .content--centered {
