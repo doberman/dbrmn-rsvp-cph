@@ -48,7 +48,7 @@
 <main>
   <div
     class:has-opacity={isImageShowing}
-    class={`content ${$state === 'startScreen' ? 'show' : 'hide'}`}
+    class={`content ${$state !== 'startScreen' ? 'show' : 'hide'}`}
   >
     <img
       alt="backyard"
@@ -110,7 +110,7 @@
 
   <div
     class={`content content--centered ${
-      $state === 'successScreen' ? 'show' : 'hide'
+      $state === 'startScreen' ? 'show' : 'hide'
     }`}
   >
     <div class="message-wrapper">
@@ -157,34 +157,32 @@
     }
   }
   @keyframes star {
-    to {
+    from {
       zoom: 10%;
       opacity: 0;
     }
-    from {
+    to {
       zoom: 100%;
       opacity: 1;
     }
   }
   .star {
     animation-name: star;
-    animation-iteration-count: 1;
     animation-duration: 1.5s;
     position: absolute;
     left: 80px;
     top: -10px;
   }
   @keyframes star1 {
-    to {
+    from {
       opacity: 0;
     }
-    from {
+    to {
       opacity: 1;
     }
   }
   .star1 {
     animation-name: star1;
-    animation-iteration-count: 1;
     animation-duration: 3s;
     position: absolute;
     top: -30px;
@@ -200,7 +198,6 @@
   }
   .star2 {
     animation-name: star2;
-    animation-iteration-count: 1;
     animation-duration: 2s;
     position: absolute;
     top: 100px;
