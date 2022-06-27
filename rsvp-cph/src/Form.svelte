@@ -64,7 +64,7 @@
   }
 
   label {
-    font-size: 2.4vw;
+    font-size: 2vw;
     cursor: pointer;
   }
 
@@ -128,7 +128,7 @@
     button,
     label,
     input[type='text'] {
-      font-size: 2.4em;
+      font-size: 2em;
       margin-bottom: 50px;
     }
   }

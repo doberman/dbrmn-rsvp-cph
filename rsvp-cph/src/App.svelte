@@ -361,7 +361,7 @@
     p,
     span,
     button {
-      font-size: 2.4em;
+      font-size: 2em;
       opacity: 1;
       transition: opacity 0.3s;
     }
@@ -402,7 +402,7 @@
     p,
     span,
     button {
-      font-size: 3vw;
+      font-size: 2.7vw;
       opacity: 1;
       transition: opacity 0.3s;
     }
