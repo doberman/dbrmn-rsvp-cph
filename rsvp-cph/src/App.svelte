@@ -211,6 +211,7 @@
   a {
     color: white;
     text-decoration: underline;
+    text-decoration-thickness: 8%;
   }
   main {
     height: 100%;
@@ -234,7 +235,8 @@
 
   button {
     font-size: 1.4em;
-    border-bottom: 1px solid #fff;
+    text-decoration-thickness: 8%;
+    text-decoration: underline;
   }
 
   .img {
@@ -290,6 +292,7 @@
 
   .address a:hover {
     text-decoration: underline;
+    text-decoration-thickness: 8%;
   }
 
   .checkbox-wrapper {
@@ -314,7 +317,8 @@
   }
 
   .label-text {
-    border-bottom: 1px solid #fff;
+    text-decoration-thickness: 8%;
+    text-decoration: underline;
     margin-bottom: 30px;
     width: 100%;
   }

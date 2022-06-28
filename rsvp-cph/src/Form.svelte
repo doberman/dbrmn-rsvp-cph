@@ -101,7 +101,7 @@
   }
 
   input[type='text'] {
-    border-bottom: 1px solid #fff;
+    border-bottom: 2px solid #fff;
     font-size: 1.4em;
     width: 100%;
   }
@@ -113,7 +113,8 @@
   button {
     bottom: 0;
     font-size: 1.4em;
-    border-bottom: 1px solid #fff;
+    text-decoration-thickness: 8%;
+    text-decoration: underline;
   }
 
   .button-wrapper {
