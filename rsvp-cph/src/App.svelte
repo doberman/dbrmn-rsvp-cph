@@ -99,7 +99,7 @@
         <span>A6</span>
         <span>1220 København</span>
       </div>
-      <span>8 Sept 2022 6-10 PM</span>
+      <span>8 Sept 2022</span>
       <span>6-10 PM</span>
     </div>
     <Form />
