@@ -9,7 +9,7 @@
     class="form"
     id="my-form"
     method="POST"
-    action="https://script.google.com/macros/s/AKfycbz0UW0acgT6i_ZV75WblohHl4jcewDxASZAg6aSMm_8GxGlOTMsgsYFqMX5Js6rbVG2fw/exec"
+    action="https://script.google.com/macros/s/AKfycbw_hsV4cyjSbZ-B6s7IMc2DLXOvghiisCH-fvNmmMU2SrE0cDS694Uc5f__-eqvFukM/exec"
   >
     <input
       name="Name"
