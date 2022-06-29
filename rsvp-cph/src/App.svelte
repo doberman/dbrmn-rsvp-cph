@@ -216,6 +216,7 @@
   main {
     height: 100%;
     margin: 0;
+    -webkit-font-smoothing: antialiased;
   }
 
   p {
